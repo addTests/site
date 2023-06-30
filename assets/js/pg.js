@@ -49,7 +49,7 @@ function recuperarCotas () {
     const qtdCotasEnvio = document.getElementById('campo-cotas').value;
     const valorDasCotas = 0.39 * parseInt(qtdCotasEnvio);
     console.log(qtdCotasEnvio);
-    console.log(valorDasCotas)
+    console.log(valorDasCotas);
 }
 
 //fechar e abrir popup de compra
@@ -71,12 +71,30 @@ buttonClose.onclick = function () {
 
 //controle de telefone e cpf
 
-const telefone = document.getElementById('telefone').value;
-
-
-function controleDeContato () { 
-    
-    if (telefone.length === 11) {
-        alert(telefone);
+function ValidaCPF(){	
+    let cpfCampo = document.getElementById("cpfCampo").value; 
+    let cpfValido = /^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/;	 
+    if (cpfValido.test(cpfCampo) == true)	{ 
+       document.querySelector('#cpfCampo').style.background = corDeFundo;
+       corDeFundo = '#00FF00';
+    } else	{	 
+    	
     }
+}
+function fMasc(objeto,mascara) {
+    obj = objeto
+    mask = mascara
+    setTimeout("fMascEx()",1)
+}
+
+function fMascEx() {
+    obj.value = mask(obj.value)
+}
+
+function mCPF(cpf){
+    cpf = cpf.replace(/\D/g,"")
+    cpf = cpf.replace(/(\d{3})(\d)/,"$1.$2")
+    cpf = cpf.replace(/(\d{3})(\d)/,"$1.$2")
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+    return cpf
 }

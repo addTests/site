@@ -186,11 +186,11 @@
                                 </div>
                                 <div>
                                     <label for="telefone">Seu telefone</label>
-                                    <input type="tel" name="telefone" id="telefone" required placeholder="(xx) xxxxx-xxxx" onblur="controleDeContato()">
+                                    <input type="tel" name="telefone" class="telefone" maxlength="14" minlength="14" required placeholder="(xx) xxxxx-xxxx">
                                 </div>
                                 <div>
                                     <label for="confTelefone">Confirmar telefone</label>
-                                    <input type="tel" name="confTelefone" id="confTelefone" required placeholder="(xx) xxxxx-xxxx">
+                                    <input type="tel" name="confTelefone" class="telefone" maxlength="14" minlength="14" required placeholder="(xx) xxxxx-xxxx">
                                 </div>
                                 <div>
                                     <label for="email">Seu email</label>
@@ -198,7 +198,7 @@
                                 </div>
                                 <div>
                                     <label for="cpf">Seu CPF</label>
-                                    <input type="text" name="cpf" placeholder="xxx.xxx.xxx-xx" required>
+                                    <input type="text" name="cpf" id="cpfCampo" maxlength="14" placeholder="###.###.###-##" required onkeydown="javascript: fMasc( this, mCPF);">
                                 </div>
                                 <div id="ajuste-form">
                                     <input type="checkbox" required>
@@ -207,7 +207,7 @@
                                     </p>
                                 </div>
                                 
-                                <button onclick="recuperarCotas()" type="submit" class="mt-2 btn btn-success">finalizar</button>
+                                <button onclick="recuperarCotas(); ValidaCPF()" type="submit" class="mt-2 btn btn-success">finalizar</button>
                                 
                             </div>
                         </fieldset>
