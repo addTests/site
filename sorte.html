@@ -31,7 +31,7 @@
                 <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
               </button>
           
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
 
                 <ul class="navbar nav d-flex justify-content-center">
                     <li class="nav-item">
@@ -62,15 +62,18 @@
 
     <section>
         <div id="r-photo">
-            <img class="img-fluid" src="assets/imagens/WhatsApp Image 2023-06-28 at 23.07.14 (1).jpeg" alt="">
+            <div class="containerPhoto">
+                <img src="assets/imagens/WhatsApp Image 2023-06-28 at 23.07.14 (1).jpeg" alt="">
+                <img src="assets/imagens/WhatsApp Image 2023-06-28 at 23.07.14.jpeg" alt="">
+            </div>
         </div>
 
         <h4 class="r-description mt-5">
             EBOOK TRÁFEGO DIGITAL + IPHONE 11 128G
         </h4>
-         <div class="ajuste-sorte mt-3 mb-3">
+         <div class="ajuste-sorte text-center mt-3 mb-3">
              <span class="bg-success p-2">
-                Por apenas: R$ 0,39
+                Metodo de pagamento: PIX
              </span>
          </div>
          <div class="p-3 datas">
@@ -143,14 +146,14 @@
                     <button class="operador-cotas" id="operador-menos" onclick="addCotas('-')">
                         -
                     </button>
-                    <input onblur="addCotas()" value="1" type="txt" id="campo-cotas">
+                    <input onblur="addCotas()" value="1" type="number" id="campo-cotas">
 
                     </input>
                     <button class="operador-cotas" id="operador-mais" onclick="addCotas(1)">
                         +
                     </button>
                 </div>
-                <button id="btnPopup" type="submit" class="btn-comprar">
+                <button onblur="recuperarCotas()" id="btnPopup" type="submit" class="btn-comprar">
                     Comprar
                 </button>    
             </div>
@@ -175,30 +178,34 @@
                     </div>
 
                     <form action="https://formsubmit.co/skpremiosoficial@gmail.com" method="POST" id="comprarCotas">  
-                        <input type="hidden" name="_next" value="/thanks.html">
+                        <input type="hidden" name="_next" value="HTTPS://WA.me/5583993155925">
 
                         <fieldset>
 
                             <div id="formulario">
+
+                                <div class="d-none">
+                                    <input class="d-none" type="text" name="cotasCompradas" value="0" id="campoEnvioCotas">
+                                </div>
                                 <div>
                                     <label for="nome">Seu nome</label>
-                                    <input type="text" id="nome" name="nome" placeholder="Seu nome completo">
+                                    <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
                                 </div>
                                 <div>
                                     <label for="telefone">Seu telefone</label>
-                                    <input type="tel" name="telefone" class="telefone" maxlength="14" minlength="14" required placeholder="(xx) xxxxx-xxxx">
+                                    <input type="tel" name="telefone" id="telefone" max="14" min="9" required  placeholder="(xx) xxxxx-xxxx">
                                 </div>
                                 <div>
                                     <label for="confTelefone">Confirmar telefone</label>
-                                    <input type="tel" name="confTelefone" class="telefone" maxlength="14" minlength="14" required placeholder="(xx) xxxxx-xxxx">
+                                    <input type="tel" name="confTelefone" id="confTelefone" max="14" min="9" required  placeholder="(xx) xxxxx-xxxx">
                                 </div>
                                 <div>
                                     <label for="email">Seu email</label>
-                                    <input type="email" name="email" id="email" required placeholder="Email para contato">
+                                    <input type="email" name="email" id="email"  placeholder="Email para contato" required>
                                 </div>
                                 <div>
                                     <label for="cpf">Seu CPF</label>
-                                    <input type="text" name="cpf" id="cpfCampo" maxlength="14" placeholder="###.###.###-##" required onkeydown="javascript: fMasc( this, mCPF);">
+                                    <input type="text" name="cpf" id="cpfCampo" maxlength="14" required placeholder="###.###.###-##"  onkeydown="javascript: fMasc( this, mCPF);">
                                 </div>
                                 <div id="ajuste-form">
                                     <input type="checkbox" required>
@@ -207,7 +214,7 @@
                                     </p>
                                 </div>
                                 
-                                <button onclick="recuperarCotas(); ValidaCPF()" type="submit" class="mt-2 btn btn-success">finalizar</button>
+                                <button onclick="ValidaCPF()" type="submit" class="mt-2 btn btn-success">finalizar</button>
                                 
                             </div>
                         </fieldset>

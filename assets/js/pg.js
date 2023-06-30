@@ -42,15 +42,24 @@ function addCotas(valor) {
 }
 
 //recuperar quantidade das cotas e valor para o envio
+function recuperarCotas () {
+    let enviarCotas = document.querySelector('#campoEnvioCotas').value;
+    const qtdCotasEnvio = document.querySelector('#campo-cotas').value;
+    const valorDasCotas = 0.39 * parseInt(qtdCotasEnvio);
+
+    let cotas = parseInt(enviarCotas) + parseInt(qtdCotasEnvio);
+
+    console.log(cotas);
+
+    document.querySelector('#campoEnvioCotas').value = cotas;
+    
+}
+
+recuperarCotas()
+
 
 const btnCotas = document.getElementById('btnPopup');
 
-function recuperarCotas () {
-    const qtdCotasEnvio = document.getElementById('campo-cotas').value;
-    const valorDasCotas = 0.39 * parseInt(qtdCotasEnvio);
-    console.log(qtdCotasEnvio);
-    console.log(valorDasCotas);
-}
 
 //fechar e abrir popup de compra
 
@@ -75,10 +84,9 @@ function ValidaCPF(){
     let cpfCampo = document.getElementById("cpfCampo").value; 
     let cpfValido = /^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/;	 
     if (cpfValido.test(cpfCampo) == true)	{ 
-       document.querySelector('#cpfCampo').style.background = corDeFundo;
-       corDeFundo = '#00FF00';
+
     } else	{	 
-    	
+        document.querySelector('#cpfCampo').value = '';
     }
 }
 function fMasc(objeto,mascara) {
@@ -98,3 +106,68 @@ function mCPF(cpf){
     cpf = cpf.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
     return cpf
 }
+
+//telefone
+
+function mascaraTelefone( campo ) {
+      
+    function trata( valor,  isOnBlur ) {		
+       valor = valor.replace(/\D/g,"");                      
+       valor = valor.replace(/^(\d{2})(\d)/g,"($1)$2");      
+       if( isOnBlur ) {		   
+          valor = valor.replace(/(\d)(\d{4})$/,"$1-$2");   
+       } else {
+          valor = valor.replace(/(\d)(\d{3})$/,"$1-$2"); 
+       }
+       return valor;
+    }
+    
+    campo.onkeypress = function (evt) {		 
+       var code = (window.Event)? window.Event.keyCode : evt.which;   
+       var valor = this.value		
+       if(code > 57 || (code < 48 && code != 8 ))  {
+          return false;
+       } else {
+          this.value = trata(valor, false);
+       }
+    }
+    
+    campo.onblur = function() {
+       const num1 = document.getElementById('telefone').value;
+       const num2 = document.getElementById('confTelefone').value;
+    let valor = this.value;
+       if( valor.length < 13) {
+          this.value = ""
+       } else if (num1 != num2) {
+            document.getElementById('confTelefone').value = '';
+       }else {      
+          this.value = trata( this.value, true );
+       }
+    }
+    
+    campo.maxLength = 14;
+}
+
+//validar a igualdade dos numeros
+    mascaraTelefone( document.getElementById('telefone') );
+    mascaraTelefone(document.getElementById('confTelefone'));
+
+
+//carrossel 
+
+const imgs = document.querySelector('.containerPhoto');
+const img = document.querySelectorAll('#r-photo img');
+
+let idx = 0;
+
+function carrossel() {
+    idx++;
+
+    if(idx > img.length - 1) {
+        idx = 0;
+    }
+
+    imgs.style.transform = `translateX(${-idx * 340}px)`
+}
+
+setInterval(carrossel, 3000);

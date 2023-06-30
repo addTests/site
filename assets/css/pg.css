@@ -1,4 +1,22 @@
 
+
+#r-photo {
+    overflow: hidden;
+    width: 340px;
+    background-color: white;
+}
+
+.containerPhoto {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(0);
+}
+
+.containerPhoto > img {
+    object-fit: cover;
+    width: 340px;
+}
 .r-description {
     text-align: center;
 }
